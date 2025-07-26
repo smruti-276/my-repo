@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies on Ubuntu..."
+      - apt-get update -y
+      - apt-get install -y zip unzip
+
+  build:
+    commands:
+      - echo "Pulling code into target folder..."
+      - mkdir -p /tmp/dev-folder        # 👈 This is your target folder
+      - cp -R . /tmp/dev-folder/        # Copy all repo files
+      - echo "✅ Repo copied into /tmp/dev-folder"
+      - ls -la /tmp/dev-folder
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: /tmp/dev-folder
